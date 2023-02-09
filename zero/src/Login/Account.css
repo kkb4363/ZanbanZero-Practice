@@ -1,0 +1,43 @@
+.AccountWrapper{
+    width:800px;
+    height:800px;
+    display:flex;
+    left:0;
+    right:0;
+    margin:0 auto;
+    background-color: green;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.AccountWrapper h1{
+    font-size: 35px;
+    margin:30px;
+    font-weight: 600;
+    margin-top:200px;
+}
+
+.Account_input{
+    margin-left: -60px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width:300px;
+    height:200px;
+}
+.Account_input span{
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.Account_input input{
+    width:350px;
+    height:40px;
+}
+
+.button{
+    margin-top: 30px;
+    width:90px;
+    height:40px;
+    font-size: 20px;
+}
+
