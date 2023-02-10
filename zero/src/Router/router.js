@@ -3,6 +3,7 @@ import App from '../App';
 import Account from '../Login/Account';
 import Login from '../Login/Login';
 import Main from '../Main/Main';
+import Market from '../Market/Market';
 const router = createBrowserRouter([
     {
         path:'',
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path:'/account',
                 element:<Account/>
+            },
+            {
+                path:'/market',
+                element:<Market/>
             }
         ]
     }

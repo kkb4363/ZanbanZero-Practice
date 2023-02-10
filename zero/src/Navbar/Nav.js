@@ -12,7 +12,7 @@ function Nav(){
             </div>
             
             <div>
-                <Link style={Linkcss} to=''>
+                <Link style={Linkcss} to='/market'>
                     <FaShoppingBag/>
                 </Link>
             </div>
