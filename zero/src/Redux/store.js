@@ -17,6 +17,11 @@ const items = createSlice({
         name: '그린티 랑드샤 세트',
         price: 36000,
         amount: 1,
+    },{
+        id:3,
+        name:'아이스티 샷 추가',
+        price: 16000,
+        amount:1,
     }],
     reducers:{
         addCount(state,action){
@@ -31,7 +36,7 @@ const items = createSlice({
             action.payload.remove();
         }
     }
-})
+}) 
 
 export const {addCount,minusCount,deleteItem} = items.actions
 

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
 
 function Market(){
-    const [checkItems, setCheckItems] = useState([]),dispatch = useDispatch();;
+    const [checkItems, setCheckItems] = useState([]),dispatch = useDispatch(),[isdelete,setIsdelete] = useState([]);
     const items = useSelector(state => state.items);
     const onSingle = (checked, id) => {
         if(checked){
@@ -15,9 +15,19 @@ function Market(){
     }
     const onEvery = (checked) => {
         if(checked){
-            const Array = [];
-            items.map(el => Array.push(el.id));
-            setCheckItems(Array);
+            if(isdelete.length !==0){               
+                const Array = [];
+                const filteritems = [...items]
+                let test = [];
+                test = filteritems.filter(x => !isdelete.includes(x.id))
+                test.map(a => Array.push(a.id))
+                setCheckItems(Array)
+            }
+            else{
+                const Array = [];
+                items.map(el => Array.push(el.id));
+                setCheckItems(Array);
+            }   
         }
         else setCheckItems([]);
     }
@@ -40,7 +50,9 @@ function Market(){
                         <input 
                         type='checkbox' 
                         onChange={(e) => onEvery(e.target.checked)}
-                        checked={checkItems.length === items.length ? true : false}/>
+                        checked={
+                            isdelete.length !== 0 ? checkItems.length === items.length - isdelete.length ? true : false :
+                            checkItems.length === items.length ? true : false}/>
                         <h2>전체선택</h2>
                     </div>
                     <div>
@@ -74,10 +86,11 @@ function Market(){
                                             {a.price*a.amount+'원'}
                                         </span>
                                     </div>
-                                    <div className='deleteItem' onClick={e => {
+                                    <div className='deleteItem' >
+                                        <BsXLg onClick={e => {
                                         setCheckItems(checkItems.filter(el => el !== a.id))
-                                        dispatch(deleteItem(e.target.parentElement.parentElement.parentElement))}}>
-                                        <BsXLg/>
+                                        setIsdelete(el => [...el, a.id])
+                                        dispatch(deleteItem(e.target.parentElement.parentElement.parentElement))}}/>
                                     </div>
                                 </div>
                                 <hr/>
