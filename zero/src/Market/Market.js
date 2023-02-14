@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
 
 function Market(){
-    const [checkItems, setCheckItems] = useState([]),dispatch = useDispatch(),[isdelete,setIsdelete] = useState([]);
+    const [checkItems, setCheckItems] = useState([]),[isdelete,setIsdelete] = useState([]);
     const items = useSelector(state => state.items);
+    const dispatch = useDispatch();
+    
     const onSingle = (checked, id) => {
         if(checked){
             setCheckItems(prev => [...prev,id]);
@@ -15,15 +17,13 @@ function Market(){
     }
     const onEvery = (checked) => {
         if(checked){
-            if(isdelete.length !==0){               
+            if(isdelete.length !==0){ //삭제된 아이템이 있을 시              
                 const Array = [];
-                const filteritems = [...items]
-                let test = [];
-                test = filteritems.filter(x => !isdelete.includes(x.id))
-                test.map(a => Array.push(a.id))
+                const filtereditems = items.filter(x => !isdelete.includes(x.id));
+                filtereditems.map(a => Array.push(a.id))
                 setCheckItems(Array)
             }
-            else{
+            else{ // 삭제된 아이템이 없을 시
                 const Array = [];
                 items.map(el => Array.push(el.id));
                 setCheckItems(Array);
@@ -35,8 +35,6 @@ function Market(){
         return checkItems.includes(a.id)? Object.values(a)[2] * a.amount : null
     })
     const TotalPrice = Price.reduce((a,b) => a+b)
-
-    
 
     return(
         <>

@@ -38,10 +38,34 @@ const items = createSlice({
     }
 }) 
 
+const User = createSlice({
+    name:'User',
+    initialState:{
+        ID:'',
+        Password:'',
+        isLogin:false
+    },
+    reducers:{
+        loginUser(state,action){
+            state.ID = action.payload.ID;
+            state.Password = action.payload.PW;
+            state.isLogin = true;
+        },
+        logoutUser(state){
+            state.ID='';
+            state.Password='';
+            state.isLogin=false;
+        }
+    }
+})
+
+
 export const {addCount,minusCount,deleteItem} = items.actions
+export const {loginUser,logoutUser} = User.actions;
 
 export default configureStore({
     reducer:{
-        items:items.reducer
+        items:items.reducer,
+        User:User.reducer
     }
 })

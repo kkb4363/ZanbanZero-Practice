@@ -1,9 +1,10 @@
 import {createBrowserRouter} from 'react-router-dom';
 import App from '../App';
 import Account from '../Login/Account';
-import Login from '../Login/Login';
+import LoginMain from '../Login/LoginMain';
 import Main from '../Main/Main';
 import Market from '../Market/Market';
+
 const router = createBrowserRouter([
     {
         path:'',
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/login',
-                element:<Login/>
+                element:<LoginMain/>
             },
             {
                 path:'/account',
