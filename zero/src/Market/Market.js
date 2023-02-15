@@ -8,7 +8,7 @@ function Market(){
     const [checkItems, setCheckItems] = useState([]),[isdelete,setIsdelete] = useState([]);
     const items = useSelector(state => state.items);
     const dispatch = useDispatch();
-    
+
     const onSingle = (checked, id) => {
         if(checked){
             setCheckItems(prev => [...prev,id]);
@@ -52,9 +52,6 @@ function Market(){
                             isdelete.length !== 0 ? checkItems.length === items.length - isdelete.length ? true : false :
                             checkItems.length === items.length ? true : false}/>
                         <h2>전체선택</h2>
-                    </div>
-                    <div>
-                        <div>선택삭제</div>
                     </div>
                 </div>
 

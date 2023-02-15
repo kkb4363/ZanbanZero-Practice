@@ -4,7 +4,6 @@ import OkLogin from '../Login/OkLogin';
 
 function LoginMain(){
     let User = useSelector(state=>state.User);
-    console.log(User.isLogin)
     
     return(
         <>

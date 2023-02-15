@@ -6,6 +6,8 @@ import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../Redux/store';
 
+const api주소 = `http://localhost:3000/users`;
+
 function Login(){
     const [Msg,setMsg]=useState(''),[ID,SetID] = useState(''), [PW,SetPW] = useState('');
     const dispatch = useDispatch();
@@ -13,11 +15,11 @@ function Login(){
     const onSubmit = (e) => {
         e.preventDefault();
         let body = {ID,PW}
-        axios.get(`http://localhost:3000/users`)
+        axios.get(`${api주소}`)
         .then(
             res => res.data.filter(i => i.ID === body.ID) !=='' ? 
             res.data.filter(i => i.ID === body.ID)[0].Password === body.PW ?
-            axios.post(`http://localhost:3000/users`,body)
+            axios.post(`${api주소}`,body)
             .then(rs => {dispatch(loginUser(rs.data))})
             :setMsg('비밀번호가 다릅니다')
             :setMsg('ID or PW를 확인해주세요')
