@@ -43,13 +43,15 @@ const User = createSlice({
     initialState:{
         ID:'',
         Password:'',
-        isLogin:false
+        isLogin:false,
+        admin:false
     },
     reducers:{
         loginUser(state,action){
             state.ID = action.payload.ID;
             state.Password = action.payload.PW;
             state.isLogin = true;
+            state.admin = action.payload.admin;
         },
         logoutUser(state){
             state.ID='';

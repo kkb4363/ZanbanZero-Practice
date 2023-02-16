@@ -26,3 +26,15 @@
 .회원가입{
     display:flex;
 }
+
+.admin_notadmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin_notadmin input{
+    width:50px;
+    height:20px;
+    margin-left: -10px;
+}

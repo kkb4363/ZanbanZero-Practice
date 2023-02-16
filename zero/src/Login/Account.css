@@ -1,6 +1,6 @@
 .AccountWrapper{
     width:800px;
-    height:800px;
+    height:600px;
     display:flex;
     left:0;
     right:0;
@@ -20,14 +20,10 @@
     margin-left: -60px;
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
     width:300px;
     height:200px;
 }
-.Account_input span{
-    font-size: 14px;
-    margin-bottom: 50px;
-}
+
 .Account_input input{
     width:350px;
     height:40px;
@@ -38,5 +34,37 @@
     width:90px;
     height:40px;
     font-size: 20px;
+}
+
+.idcheck{
+    display:flex;
+    justify-content: space-between;
+    width:470px;
+    height: 50px;
+}
+
+.idcheck input{
+    width:350px;
+    height:40px;
+}
+
+.idcheck button{
+    width: 80px;
+    height: 45px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.admin_div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    height: 50px;
+}
+
+.admin_div input{
+    width:30px;
+    height: 30px;
 }
 

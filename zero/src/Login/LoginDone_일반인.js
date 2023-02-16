@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../Redux/store';
-import '../Login/OkLogin.css';
+import '../Login/LoginDone_일반인.css';
 
 
-function OkLogin(){
+function LoginDone_일반인(){
     const User = useSelector(state => state.User);
     const dispatch = useDispatch();
     const Logout = () => {
@@ -17,4 +17,4 @@ function OkLogin(){
     )
 }
 
-export default OkLogin;
+export default LoginDone_일반인;
