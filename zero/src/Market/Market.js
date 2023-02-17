@@ -1,6 +1,6 @@
 import '../Market/Market.css';
 import {useSelector, useDispatch} from 'react-redux';
-import {addCount, minusCount, deleteItem} from '../Redux/store';
+import {addCount, minusCount, deleteItem,plusItem} from '../Redux/store';
 import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
 
@@ -36,6 +36,14 @@ function Market(){
     })
     const TotalPrice = Price.reduce((a,b) => a+b)
 
+    const test = () => {
+        dispatch(plusItem({
+            id:5,
+            name:'아이템 추가하기 테스트!',
+            price:99999,
+        }))
+    }
+
     return(
         <>
         <h1 className='title'>장바구니</h1>
@@ -52,6 +60,7 @@ function Market(){
                             isdelete.length !== 0 ? checkItems.length === items.length - isdelete.length ? true : false :
                             checkItems.length === items.length ? true : false}/>
                         <h2>전체선택</h2>
+                            <button onClick={test}>장바구니 추가하기 test</button>
                     </div>
                 </div>
 

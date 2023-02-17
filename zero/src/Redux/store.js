@@ -34,6 +34,15 @@ const items = createSlice({
         },
         deleteItem(state,action){
             action.payload.remove();
+        },
+        plusItem(state,action){
+            const newItem = action.payload;
+            state.push({
+                id:newItem.id,
+                name:newItem.name,
+                price:newItem.price,
+                amount:1
+            }) 
         }
     }
 }) 
@@ -62,7 +71,7 @@ const User = createSlice({
 })
 
 
-export const {addCount,minusCount,deleteItem} = items.actions
+export const {addCount,minusCount,deleteItem,plusItem} = items.actions
 export const {loginUser,logoutUser} = User.actions;
 
 export default configureStore({
