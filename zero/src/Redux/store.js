@@ -1,4 +1,6 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit';
+import {combineReducers, createSlice} from '@reduxjs/toolkit';
+import {persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const items = createSlice({
     name:'items',
@@ -70,13 +72,37 @@ const User = createSlice({
     }
 })
 
+const persistConfig = {
+    key:'redux',
+    storage : storage,
+    whitelist:['User']
+}
+
 
 export const {addCount,minusCount,deleteItem,plusItem} = items.actions
 export const {loginUser,logoutUser} = User.actions;
 
-export default configureStore({
-    reducer:{
+const rootReducer = combineReducers({
         items:items.reducer,
         User:User.reducer
-    }
 })
+
+
+export default persistReducer(persistConfig, rootReducer);
+
+
+
+// localstorage 사용 안할 때 export 하는 코드
+// export default configureStore({
+//     reducer : rootReducer
+// })
+
+
+
+// combineReducers 사용 안할 때 썼던 코드
+// export default configureStore({
+//     reducer:{
+//         items:items.reducer,
+//         User:User.reducer
+//     }
+// })

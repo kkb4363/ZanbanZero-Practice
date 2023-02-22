@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {RouterProvider} from 'react-router-dom';
 import router from './Router/router';
-import store from './Redux/store';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import {persistStore} from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react';
+import persistReducer from './Redux/store';
+import {createStore} from 'redux';
 
+
+
+const store = createStore(persistReducer)
+const persistor = persistStore(store);
 const client = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +21,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </QueryClientProvider>
   </React.StrictMode>

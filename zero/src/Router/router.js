@@ -11,8 +11,12 @@ const router = createBrowserRouter([
         element:<App/>,
         children:[
             {
-                path:`${process.env.PUBLIC_URL}/`,
-                element:<Main/>,   
+                path:`/`,
+                element:<Main/>,
+            },
+            {
+                path:`/:id`,
+                element:<Main/>
             },
             {
                 path:'/login',

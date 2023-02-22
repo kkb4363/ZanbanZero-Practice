@@ -1,6 +1,6 @@
 import '../Market/Market.css';
 import {useSelector, useDispatch} from 'react-redux';
-import {addCount, minusCount, deleteItem,plusItem} from '../Redux/store';
+import {addCount, minusCount, deleteItem,plusItem, deleteItem2} from '../Redux/store';
 import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
 
@@ -43,6 +43,8 @@ function Market(){
             price:99999,
         }))
     }
+
+    console.log(items)
 
     return(
         <>
@@ -94,7 +96,8 @@ function Market(){
                                         <BsXLg onClick={e => {
                                         setCheckItems(checkItems.filter(el => el !== a.id))
                                         setIsdelete(el => [...el, a.id])
-                                        dispatch(deleteItem(e.target.parentElement.parentElement.parentElement))}}/>
+                                        dispatch(deleteItem(e.target.parentElement.parentElement.parentElement))
+                                        }}/>
                                     </div>
                                 </div>
                                 <hr/>
