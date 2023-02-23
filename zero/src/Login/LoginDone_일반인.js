@@ -9,7 +9,9 @@ function LoginDone_일반인(){
     <div className='Wrapper'>
         
         <div className='LoginWrapper'>
+        <h1>일반 사용자 입니다.</h1>
         <p>{User.ID}님 안녕하세요</p>
+        
         </div>
 
         <div className='itemsWrapper'>

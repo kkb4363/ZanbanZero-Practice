@@ -1,8 +1,9 @@
 import '../Market/Market.css';
 import {useSelector, useDispatch} from 'react-redux';
-import {addCount, minusCount, deleteItem,plusItem, deleteItem2} from '../Redux/store';
+import {addCount, minusCount, deleteItem} from '../Redux/store';
 import { useState } from 'react';
 import { BsXLg } from "react-icons/bs";
+import {Link} from 'react-router-dom';
 
 function Market(){
     const [checkItems, setCheckItems] = useState([]),[isdelete,setIsdelete] = useState([]);
@@ -36,15 +37,7 @@ function Market(){
     })
     const TotalPrice = Price.reduce((a,b) => a+b)
 
-    const test = () => {
-        dispatch(plusItem({
-            id:5,
-            name:'아이템 추가하기 테스트!',
-            price:99999,
-        }))
-    }
 
-    console.log(items)
 
     return(
         <>
@@ -62,7 +55,6 @@ function Market(){
                             isdelete.length !== 0 ? checkItems.length === items.length - isdelete.length ? true : false :
                             checkItems.length === items.length ? true : false}/>
                         <h2>전체선택</h2>
-                            <button onClick={test}>장바구니 추가하기 test</button>
                     </div>
                 </div>
 
@@ -123,7 +115,9 @@ function Market(){
                     <h3>결제 예상 금액</h3>
                     <span>{TotalPrice}원</span>
                 </div>
-                <div className='item_buy_주문하기'>{TotalPrice}원 주문하기</div>
+                <div className='item_buy_주문하기'>
+                    <Link to='/pay'>{TotalPrice}원 주문하기</Link>
+                </div>
             </div>
         </div>
         </>

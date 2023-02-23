@@ -1,9 +1,12 @@
 import {useQuery} from '@tanstack/react-query';
-import { get음식점,getTest } from "../API/api";
+import { getTest } from "../API/api";
 import styled from 'styled-components';
 import {makeImagePath} from '../UTIL/utils';
 import {useNavigate,useMatch} from 'react-router-dom'
-
+import {plusItem} from '../Redux/store';
+import { useDispatch} from 'react-redux';
+import { useState } from 'react';
+import '../Main/Main.css'
 
 const Wrapper = styled.div`
 display:grid;
@@ -30,15 +33,25 @@ background-image:url(${props => props.bgPhoto})
 
 function Main(){
     const {data, isLoading} = useQuery(['Test'],getTest);
-    const navigate = useNavigate();
+    const navigate = useNavigate(),dispatch = useDispatch();
     const PathMatch = useMatch('/:id');
     const ShopPathMatch = PathMatch?.params.id && data.results.find(shop => shop.id+'' === PathMatch?.params.id)
 
+    const [item, setItem] = useState(5);
+
+
     const onBox = (id) => {
         navigate(`/${id}`)
-        console.log(ShopPathMatch)
     }
 
+    const addItem = () => {
+        dispatch(plusItem({
+            id:item,
+            name:`Test Item ${item}`,
+            price:5000*item,
+        }))
+        setItem(prev => prev +1)
+    }
 
     
     return(
@@ -46,10 +59,14 @@ function Main(){
             {isLoading ? <>Loading...</> 
             :<Wrapper>
                 {ShopPathMatch ?
-                <>
-                {ShopPathMatch.title} 페이지 입니다! 
-                {/* 아직 css는 안함. */}
-                </>
+                <div className='ShopWrapper'>
+                    <span>{ShopPathMatch.title} 페이지 입니다! </span>
+                
+                    <div className='Shop_item'>
+                        <span>item {item}</span>
+                        <button onClick={addItem}>장바구니에 추가하기</button>
+                    </div>
+                </div>
                 : 
                 data.results.map(test => 
                     <Box 

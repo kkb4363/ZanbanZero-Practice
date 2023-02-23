@@ -4,6 +4,7 @@ import Account from '../Login/Account';
 import LoginMain from '../Login/LoginMain';
 import Main from '../Main/Main';
 import Market from '../Market/Market';
+import Payment from '../Payment/Payment';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path:'/market',
                 element:<Market/>
+            },
+            {
+                path:'/pay',
+                element:<Payment/>
             }
         ]
     }

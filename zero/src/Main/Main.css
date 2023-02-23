@@ -1,0 +1,33 @@
+@import '../reset.css';
+
+.ShopWrapper{
+    display: flex;
+    width: 800px;
+    height: 800px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 220px;
+    flex-direction: column;
+}
+
+.ShopWrapper span{
+    font-size: 30px;
+    margin-top: -300px;
+}
+
+.Shop_item{
+    display: flex;
+    width:400px;
+    height: 300px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Shop_item span{
+    margin-top:2px;
+}
+
+.Shop_item button{
+    width:200px;
+    height: 50px;
+}
