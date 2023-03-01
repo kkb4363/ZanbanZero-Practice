@@ -10,12 +10,19 @@
     margin:0 auto;
     width:700px;
     height: 700px;
+    margin-top:-50px;
 }
 
-.loginWrapper button{
-    width:80px;
+.buttoncss{
+    width:260px;
+    height:30px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.buttoncss button{
+    width:125px;
     height: 25px;
-    border-radius: 15px;
     border:0px solid black;
 }
 
@@ -29,12 +36,6 @@
 
 .admin_notadmin{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}
-
-.admin_notadmin input{
-    width:50px;
-    height:20px;
-    margin-left: -10px;
 }

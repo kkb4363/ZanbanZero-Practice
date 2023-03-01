@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import NoLogin from '../Login/NoLogin';
 import LoginDone_일반인 from './LoginDone_일반인';
 import LoginDone_사업자 from "./LoginDone_사업자";
+import '../Login/LoginMain.css';
+
 
 function LoginMain(){
     let User = useSelector(state=>state.User);

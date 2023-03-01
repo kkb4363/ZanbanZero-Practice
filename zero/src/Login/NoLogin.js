@@ -1,16 +1,41 @@
 import '../Login/NoLogin.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { Inputcss, Linkcss } from '../CSS/Css';
 import { useState } from 'react';
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../Redux/store';
+import styled from 'styled-components';
+
+
+
+const 일반관리자체크박스W = styled.div`
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:260px;
+height:30px;
+`
+
+const 일반관리자체크박스 = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+input{
+    margin-left:-12px;
+    margin-right:-10px;
+    width:50px;
+    height:20px;
+}
+`
+
 
 const 일반인api = `http://localhost:3000/users`;
 
 function Login(){
     const [ID,SetID] = useState(''), [PW,SetPW] = useState(''),[admin,Setadmin]=useState(false);
     const dispatch = useDispatch();
+    const nav = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -44,16 +69,25 @@ function Login(){
     const onNotAdmin = () => {
         Setadmin(false)
     }
+
+    const goaccount = () => {
+        nav('/account')
+    }
+
     return(
         <>
         <form className="loginWrapper" onSubmit={onSubmit}>
             <h2 style={{marginBottom:'20px',fontSize:'25px',fontWeight:600}}>잔반제로에 로그인 하세요</h2>
-            <div className='admin_notadmin'>
-                <label htmlFor='notadmin'>일반인</label>
-                <input id='notadmin' type='checkbox' checked={admin? false : true} onClick={onNotAdmin}/>
-                <label htmlFor='admin'>사업자</label>
-                <input id='admin' type='checkbox' checked={admin? true : false} onClick={onAdmin}/>
-            </div>
+            <일반관리자체크박스W>
+                <일반관리자체크박스>
+                    <input id='notadmin' type='checkbox' checked={admin? false : true} onClick={onNotAdmin}/>
+                    <label htmlFor='notadmin'>일반</label>
+                </일반관리자체크박스>
+                <일반관리자체크박스>
+                    <input id='admin' type='checkbox' checked={admin? true : false} onClick={onAdmin}/>
+                    <label htmlFor='admin'>관리자</label>
+                </일반관리자체크박스>
+            </일반관리자체크박스W>
             
             
             <input 
@@ -68,12 +102,19 @@ function Login(){
             type='password'
             onChange={e => SetPW(e.target.value)}
             />
-            <button style={{marginBottom:'10px'}} type='submit'>Login</button>
+            <div className='buttoncss'>
+            {/* # form 안에 button이 있을때 자동으로 submit되는 현상 막기
+            - <button type='button'></button>
+            - 이런식으로 버튼에 타입을 주면 된다 */}
+            <button style={{marginBottom:'10px'}} onClick={goaccount} type='button'>회원가입</button>
+            <button style={{marginBottom:'10px'}} type='submit'>로그인</button>
+            </div>
             
-            <div className='회원가입'>
+            
+            {/* <div className='회원가입'>
             <h3>잔반제로 ID가 없으십니까?</h3>
             <Link to='/account' style={{...Linkcss,color:'#a5d1f4',marginTop:'50px'}}>지금 만드세요</Link>
-            </div>
+            </div> */}
         </form>
         </>
         
